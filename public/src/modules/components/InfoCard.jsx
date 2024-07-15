@@ -1,4 +1,16 @@
-import { Avatar, Box, Button, Grid, IconButton, List, ListItem, ListItemAvatar, ListItemText, Modal, Typography } from "@mui/material";
+import { 
+    Avatar, 
+    Box, 
+    Button, 
+    Grid, 
+    IconButton, 
+    List, 
+    ListItem, 
+    ListItemAvatar, 
+    ListItemText, 
+    Modal, 
+    Typography 
+} from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -80,7 +92,7 @@ export const InfoCard = (prop) => {
                 text: "Ha sido actualizado exitosamente",
                 icon: "success"
             });
-            setData(data.map(item => item.id === idUser ? editData : item));
+            setData(data.map(item => item.id === idUser ? editData : item)); // Busca el ID si hace match hace el cambio, sino lo deja como estaba
             handleClose();
         }).catch((error) => {
             Swal.fire({

@@ -13,9 +13,11 @@ const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findByPk(id);
+
         if (!user) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
+
         res.status(200).json(user);
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -32,6 +34,7 @@ const updateUser = async (req, res) => {
         });
     
         const usernotArray = user.toString();
+        
         if (usernotArray === '0') {
           return res.status(404).json({ message: 'Usuario no encontrado' });
         }
@@ -45,7 +48,6 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
-        console.log(`deleting ${id}`);
         const user = await User.destroy({ where: { id } });
         res.status(200).json(user);
     } catch (error) {

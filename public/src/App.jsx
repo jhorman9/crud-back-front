@@ -10,6 +10,7 @@ function App() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        minHeight: 'calc(100vh - 16px)'
       }}
     >
       <CreateForm />

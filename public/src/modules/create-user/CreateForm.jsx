@@ -12,6 +12,7 @@ function CreateForm() {
     email: "",
     password: "",
   });
+  const [isCreate, setIsCreate] = useState(false);
 
   const handleValue = (field, value) => {
     const copyState = { ...formValues };
@@ -38,6 +39,7 @@ function CreateForm() {
         email: "",
         password: "",
       });
+      setIsCreate(!isCreate);
     })
     .catch(error => {
       console.log('error:', error.response.data.error)
@@ -111,7 +113,7 @@ function CreateForm() {
           color: 'white',
         }} 
         >
-      <InfoCard />
+      <InfoCard isCreate={isCreate}/>
       </Box>
     </CustomCard>
   );

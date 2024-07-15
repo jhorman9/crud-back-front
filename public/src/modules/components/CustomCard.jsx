@@ -1,5 +1,4 @@
 import { Card } from "@mui/material";
-import React from "react";
 
 function CustomCard({ children }) {
   return (

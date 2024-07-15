@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Swal from "sweetalert2";
+import { useStyles } from "../../hooks/useStyles";
 
 export const InfoCard = (prop) => {
 
@@ -13,6 +14,7 @@ export const InfoCard = (prop) => {
     const [idUser, setIdUser] = useState(0);
     const handleClose = () => setOpen(false);
     const { isCreate } = prop;
+    const styles = useStyles();
 
     useEffect(() => {
         axios.get('http://localhost:8000/users')
@@ -137,18 +139,6 @@ export const InfoCard = (prop) => {
             </ListItem>
         ));
     }
-    
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 4,
-    };
 
     return (
         <>
@@ -156,7 +146,7 @@ export const InfoCard = (prop) => {
             <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
                 Lista de usuarios
             </Typography>
-            <List dense={false}>
+            <List dense={true} style={styles.list}>
                 {generate()}
             </List>
             <Modal
@@ -165,7 +155,7 @@ export const InfoCard = (prop) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={styles.modal}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         <strong>Datos del usuario</strong>
                     </Typography>

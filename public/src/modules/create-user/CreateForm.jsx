@@ -20,7 +20,6 @@ function CreateForm() {
     setFormValues(copyState);
   };
 
-  console.log(JSON.stringify(formValues));
 
   const handleSubmit = () => {
     axios.post('http://127.0.0.1:8000/users', formValues)
@@ -42,7 +41,6 @@ function CreateForm() {
       setIsCreate(!isCreate);
     })
     .catch(error => {
-      console.log('error:', error.response.data.error)
       Swal.fire({
         title: "Oops error",
         text: `${error.response.data.error}`,
